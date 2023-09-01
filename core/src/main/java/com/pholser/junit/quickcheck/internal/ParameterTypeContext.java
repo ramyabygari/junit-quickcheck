@@ -54,6 +54,7 @@ import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import org.javaruntype.type.ExtendsTypeParameter;
@@ -472,7 +473,7 @@ public class ParameterTypeContext {
         TypeParameter<?> p,
         AnnotatedType a) {
 
-        Set<org.javaruntype.type.Type<?>> supertypes = supertypes(p.getType());
+        Set<org.javaruntype.type.Type<?>> supertypes = new LinkedHashSet<>(supertypes(p.getType()));
         org.javaruntype.type.Type<?> choice = choose(supertypes, random);
 
         typeParameterContexts.add(
